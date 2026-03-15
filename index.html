@@ -7,89 +7,86 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
-<body class="bg-[#f5f7fa] text-gray-900 font-sans antialiased pb-28">
+<body class="bg-[#f0f4f8] text-gray-900 font-sans antialiased pb-28">
 
-<!-- Контент страниц -->
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-  <!-- Вкладки -->
-  <div id="pageContainer">
-    <!-- Главная -->
-    <div id="homePage" class="page">
-      <!-- Приветствие -->
-      <div class="mb-6">
-        <h1 class="text-2xl font-bold">Привет, Алексей!</h1>
-      </div>
 
-      <!-- Статус еды -->
-      <div id="foodStatus" class="bg-white rounded-3xl p-6 shadow-lg mb-6">
-        <div id="statusText" class="text-lg font-semibold mb-2">Ты сегодня ничего не ел...</div>
-        <div id="statusSubText" class="text-gray-500 mb-4">Надо что-то съесть</div>
-        <div id="statusFooter" class="text-gray-400 text-sm">Вы сегодня съели достаточно: 0 ХЕ</div>
-      </div>
-
-      <!-- График еды -->
-      <div class="bg-white rounded-3xl p-4 shadow-lg">
-        <h2 class="text-lg font-semibold mb-4">График еды</h2>
-        <div class="grid grid-cols-3 gap-3">
-          <button onclick="openMeal('Завтрак')" class="p-4 bg-blue-50 rounded-2xl hover:bg-blue-100 transition">Завтрак</button>
-          <button onclick="openMeal('Обед')" class="p-4 bg-green-50 rounded-2xl hover:bg-green-100 transition">Обед</button>
-          <button onclick="openMeal('Ужин')" class="p-4 bg-orange-50 rounded-2xl hover:bg-orange-100 transition">Ужин</button>
-        </div>
-      </div>
+  <!-- Главная -->
+  <div id="homePage" class="page">
+    <!-- Приветствие с градиентом -->
+    <div class="mb-6 p-4 rounded-3xl text-white font-bold text-2xl shadow-lg" style="background: linear-gradient(135deg, #6EE7B7, #3B82F6);">
+      Привет, Алексей!
     </div>
 
-    <!-- Еда -->
-    <div id="foodPage" class="page hidden">
-      <h2 class="text-xl font-semibold mb-4">Добавить продукты (1 ХЕ)</h2>
-      <div id="foodGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+    <!-- Статус еды -->
+    <div id="foodStatus" class="rounded-3xl p-6 shadow-lg mb-6 transition-colors duration-500">
+      <div id="statusText" class="text-xl font-semibold mb-2">Ты сегодня ничего не ел...</div>
+      <div id="statusSubText" class="text-gray-200 mb-4">Надо что-то съесть</div>
+      <div id="statusFooter" class="text-gray-300 text-sm">Вы сегодня съели достаточно: 0 ХЕ</div>
     </div>
 
-    <!-- Профиль -->
-    <div id="profilePage" class="page hidden">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-semibold">Профиль</h2>
-        <button class="p-2 rounded-full hover:bg-gray-100 transition">
-          <iconify-icon icon="solar:edit-pencil-linear" width="24"></iconify-icon>
+    <!-- График еды -->
+    <div class="bg-white rounded-3xl p-4 shadow-lg">
+      <h2 class="text-lg font-semibold mb-4">График еды</h2>
+      <div class="grid grid-cols-3 gap-3">
+        <button onclick="openMeal('Завтрак')" class="p-4 rounded-2xl bg-gradient-to-r from-yellow-200 to-yellow-400 hover:from-yellow-300 hover:to-yellow-500 shadow-md text-gray-800 font-semibold transition transform hover:scale-105">
+          Завтрак
         </button>
-      </div>
-      <div class="flex flex-col items-center gap-4">
-        <div class="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center text-white text-3xl font-bold">А</div>
-        <div class="text-lg font-semibold">Алексей</div>
-        <div class="text-gray-500">ХЕ: <span id="userXE">5</span></div>
-      </div>
-    </div>
-
-    <!-- Подробный график еды -->
-    <div id="mealPage" class="page hidden">
-      <div class="flex items-center mb-4">
-        <button onclick="switchPage('homePage')" class="p-2 rounded-full hover:bg-gray-200 mr-2">
-          <iconify-icon icon="solar:arrow-left-linear" width="24"></iconify-icon>
+        <button onclick="openMeal('Обед')" class="p-4 rounded-2xl bg-gradient-to-r from-green-200 to-green-400 hover:from-green-300 hover:to-green-500 shadow-md text-gray-800 font-semibold transition transform hover:scale-105">
+          Обед
         </button>
-        <h2 class="text-xl font-semibold" id="mealTitle">Полный график</h2>
-      </div>
-      <div id="mealDetails" class="space-y-3">
-        <!-- Сюда добавим продукты для выбранного приема пищи -->
-        <div class="p-3 bg-gray-100 rounded-xl">Пример продукта 1</div>
-        <div class="p-3 bg-gray-100 rounded-xl">Пример продукта 2</div>
+        <button onclick="openMeal('Ужин')" class="p-4 rounded-2xl bg-gradient-to-r from-orange-200 to-orange-400 hover:from-orange-300 hover:to-orange-500 shadow-md text-gray-800 font-semibold transition transform hover:scale-105">
+          Ужин
+        </button>
       </div>
     </div>
   </div>
+
+  <!-- Еда -->
+  <div id="foodPage" class="page hidden">
+    <h2 class="text-xl font-semibold mb-4">Добавить продукты (1 ХЕ)</h2>
+    <div id="foodGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+  </div>
+
+  <!-- Профиль -->
+  <div id="profilePage" class="page hidden">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-xl font-semibold">Профиль</h2>
+      <button class="p-2 rounded-full hover:bg-gray-100 transition">
+        <iconify-icon icon="solar:edit-pencil-linear" width="24"></iconify-icon>
+      </button>
+    </div>
+    <div class="flex flex-col items-center gap-4">
+      <div class="w-24 h-24 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 flex items-center justify-center text-white text-3xl font-bold">А</div>
+      <div class="text-lg font-semibold">Алексей</div>
+      <div class="text-gray-500">ХЕ: <span id="userXE">5</span></div>
+    </div>
+  </div>
+
+  <!-- Подробный график еды -->
+  <div id="mealPage" class="page hidden">
+    <div class="flex items-center mb-4">
+      <button onclick="switchPage('homePage')" class="p-2 rounded-full hover:bg-gray-200 mr-2">
+        <iconify-icon icon="solar:arrow-left-linear" width="24"></iconify-icon>
+      </button>
+      <h2 class="text-xl font-semibold" id="mealTitle">Полный график</h2>
+    </div>
+    <div id="mealDetails" class="space-y-3"></div>
+  </div>
+
 </div>
 
 <!-- Liquid Glass Док -->
 <div class="fixed bottom-4 left-1/2 -translate-x-1/2 w-full max-w-lg px-4 z-50">
   <div class="bg-white/20 backdrop-blur-xl border border-white/30 shadow-lg rounded-full p-1 flex justify-between items-center">
-    <!-- Домик -->
     <button onclick="switchPage('homePage')" class="flex-1 flex flex-col items-center justify-center py-2 text-gray-600 hover:text-blue-600 transition-colors rounded-full group">
       <iconify-icon icon="solar:home-linear" width="24"></iconify-icon>
       <span class="text-xs mt-1">Главная</span>
     </button>
-    <!-- Еда -->
     <button onclick="switchPage('foodPage')" class="flex-1 flex flex-col items-center justify-center py-2 text-gray-600 hover:text-blue-600 transition-colors rounded-full group">
       <iconify-icon icon="solar:plate-linear" width="24"></iconify-icon>
       <span class="text-xs mt-1">Еда</span>
     </button>
-    <!-- Профиль -->
     <button onclick="switchPage('profilePage')" class="flex-1 flex flex-col items-center justify-center py-2 text-gray-600 hover:text-blue-600 transition-colors rounded-full group">
       <iconify-icon icon="solar:user-linear" width="24"></iconify-icon>
       <span class="text-xs mt-1">Профиль</span>
@@ -98,7 +95,6 @@
 </div>
 
 <script>
-  // Продукты на 1 ХЕ
   const foodDatabase = [
     "Хлеб белый — 20 г",
     "Хлеб черный/ржаной — 25 г",
@@ -120,23 +116,20 @@
   const foodGrid = document.getElementById("foodGrid");
   foodDatabase.forEach(food => {
     const div = document.createElement("div");
-    div.className = "p-3 border rounded-2xl bg-white hover:bg-blue-50 cursor-pointer flex items-center justify-between";
+    div.className = "p-3 border rounded-2xl bg-white hover:bg-blue-50 cursor-pointer flex items-center justify-between shadow-md transition";
     div.innerHTML = `<span>${food}</span><iconify-icon icon="solar:add-linear" width="20"></iconify-icon>`;
     foodGrid.appendChild(div);
   });
 
-  // Переключение страниц
   function switchPage(pageId) {
     document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
     document.getElementById(pageId).classList.remove('hidden');
   }
 
-  // Открытие приема пищи
   function openMeal(mealName) {
     document.getElementById("mealTitle").textContent = mealName;
     const mealDetails = document.getElementById("mealDetails");
-    mealDetails.innerHTML = ""; // Очистка
-    // Пример продуктов для выбранного приема
+    mealDetails.innerHTML = "";
     foodDatabase.slice(0,3).forEach(f => {
       const div = document.createElement("div");
       div.className = "p-3 bg-gray-100 rounded-xl flex justify-between items-center";
